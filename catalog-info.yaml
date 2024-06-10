@@ -1,0 +1,31 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ncea-kibana-1
+  description: ncea-kibana-1
+  annotations:
+    github.com/project-slug: defra-adp-sandpit/ncea-kibana-1
+    backstage.io/techdocs-ref: dir:.
+    dev.azure.com/project: DEFRA-FFC
+    dev.azure.com/build-definition: ncea-kibana-1
+    backstage.io/kubernetes-id: ncea-kibana-1
+  links:
+    - url: https://github.com/defra-adp-sandpit/ncea-kibana-1
+      title: GitHub Repository
+      icon: github
+    - url: https://dev.azure.com/defragovuk/DEFRA-FFC
+      title: Azure DevOps Project
+      icon: project
+    - url: https://portal.azure.com/defradev.onmicrosoft.com
+      title: Azure Portal - Defra Dev
+      icon: cloud
+    - url: https://portal.azure.com/Defra.onmicrosoft.com
+      title: Azure Portal - Defra
+      icon: cloud
+
+spec:
+  type: helm
+  lifecycle: alpha
+  owner: group:default/fcp-jkr-demo
+  system: system:default/ncea-search-system
+

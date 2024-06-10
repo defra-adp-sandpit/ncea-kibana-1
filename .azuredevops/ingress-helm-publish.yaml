@@ -1,0 +1,36 @@
+parameters:
+  - name: deployFromFeature
+    displayName: "Deploy from Feature Branch"
+    type: boolean
+    default: false
+pr:
+  branches:
+    include:
+      - main
+  drafts: false
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - "*"
+
+resources:
+  repositories:
+    - repository: DEFRA-ADPPipelineCommon
+      name: DEFRA/adp-pipeline-common
+      endpoint: DEFRA
+      type: github
+      ref: refs/heads/main
+
+extends:
+  template: /pipelines/common-app-build.yaml@DEFRA-ADPPipelineCommon
+  parameters:
+    teamName: fcp-jkr-demo
+    serviceName: ncea-kibana-1
+    deployFromFeature: ${{ parameters.deployFromFeature }}
+    appBuildConfig:
+      appFrameworkType: "helm"
+      projectPath: "helm/ncea-kibana-1/Chart.yaml"
+      imageRepoName: ncea-kibana-1
+
